@@ -25,9 +25,3 @@ Proyecto base preparado para cubrir los requisitos técnicos de la Entrega 2:
 - `ControlsFragment` -> `fragment_controls.xml`
 - `TipsFragment` -> `fragment_tips.xml`
 
-### Soporte
-- `TaskItem.java`: modelo.
-- `TaskAdapter.java`: adaptador del RecyclerView.
-- `SimpleItemSelectedListener.java`: ayuda para eventos del Spinner.
-- `item_task.xml`: diseño de cada tarjeta de tarea.
-
