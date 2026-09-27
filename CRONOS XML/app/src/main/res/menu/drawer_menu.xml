@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/nav_home" android:title="Inicio" />
+        <item android:id="@+id/nav_profile" android:title="Perfil" />
+        <item android:id="@+id/nav_gallery" android:title="Fotos" />
+        <item android:id="@+id/nav_video" android:title="Video" />
+        <item android:id="@+id/nav_web" android:title="Web" />
+        <item android:id="@+id/nav_controls" android:title="Botones / Controles" />
+        <item android:id="@+id/nav_tips" android:title="Tips" />
+    </group>
+    <item android:id="@+id/nav_logout" android:title="Cerrar sesión" />
+</menu>

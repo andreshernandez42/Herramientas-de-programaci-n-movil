@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/cronos_light">
+    <LinearLayout
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="18dp">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Fotos" android:textStyle="bold" android:textSize="26sp"
+            android:textColor="@color/cronos_navy"/>
+        <GridLayout android:id="@+id/gridGallery"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:columnCount="2" android:rowCount="2" android:layout_marginTop="16dp">
+            <Button android:id="@+id/btnGalleryTime"
+                android:layout_width="0dp" android:layout_height="130dp"
+                android:layout_columnWeight="1" android:layout_margin="6dp"
+                android:text="⌛\nTiempo" android:backgroundTint="@color/cronos_cyan"/>
+            <Button android:id="@+id/btnGalleryImage"
+                android:layout_width="0dp" android:layout_height="130dp"
+                android:layout_columnWeight="1" android:layout_margin="6dp"
+                android:text="🖼\nImágenes" android:backgroundTint="@color/cronos_blue"/>
+            <Button android:id="@+id/btnGalleryCamera"
+                android:layout_width="0dp" android:layout_height="130dp"
+                android:layout_columnWeight="1" android:layout_margin="6dp"
+                android:text="📷\nCámara" android:backgroundTint="@color/cronos_cyan_dark"/>
+            <Button android:id="@+id/btnGalleryFolder"
+                android:layout_width="0dp" android:layout_height="130dp"
+                android:layout_columnWeight="1" android:layout_margin="6dp"
+                android:text="📁\nCarpeta" android:backgroundTint="@color/cronos_navy"/>
+        </GridLayout>
+    </LinearLayout>
+</ScrollView>

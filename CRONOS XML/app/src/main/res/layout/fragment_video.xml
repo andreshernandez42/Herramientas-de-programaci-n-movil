@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:padding="20dp"
+    android:background="@color/cronos_light">
+    <TextView
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="Video" android:textStyle="bold" android:textSize="26sp"
+        android:textColor="@color/cronos_navy"/>
+    <FrameLayout
+        android:id="@+id/videoContainer"
+        android:layout_width="match_parent" android:layout_height="240dp"
+        android:layout_marginTop="22dp" android:background="@color/cronos_navy">
+        <Button
+            android:id="@+id/btnVideoPlay"
+            android:layout_width="80dp" android:layout_height="80dp"
+            android:layout_gravity="center" android:text="▶"
+            android:textSize="30sp" android:textColor="@color/white"
+            android:backgroundTint="@color/cronos_cyan"/>
+    </FrameLayout>
+    <TextView
+        android:id="@+id/tvVideoCaption"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="▶ Demo en vivo de Cronos"
+        android:gravity="center" android:padding="16dp"
+        android:textColor="@color/cronos_navy"/>
+</LinearLayout>

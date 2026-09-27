@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/cronos_light">
+    <LinearLayout
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:gravity="center_horizontal"
+        android:padding="24dp">
+        <TextView android:id="@+id/tvProfileAvatar"
+            android:layout_width="96dp" android:layout_height="96dp"
+            android:gravity="center" android:text="👤" android:textSize="52sp"
+            android:background="@drawable/bg_cronos_header"/>
+        <TextView android:id="@+id/tvProfileName"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Sofia Reyes" android:textColor="@color/cronos_navy"
+            android:textStyle="bold" android:textSize="22sp" android:layout_marginTop="14dp"/>
+        <TextView android:id="@+id/tvProfileEmail"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="sofia@cronos.app" android:textColor="@color/cronos_gray"/>
+        <TextView android:id="@+id/tvProfileStats"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="5 Tareas   •   3 Completadas   •   2 Pendientes"
+            android:gravity="center" android:padding="20dp"
+            android:background="@drawable/bg_panel" android:layout_marginTop="24dp"/>
+        <TextView android:id="@+id/tvMembership"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="✓ Membresía activa\nCuenta sincronizada con Cronos Cloud"
+            android:gravity="center" android:padding="18dp"
+            android:background="@drawable/bg_panel" android:layout_marginTop="16dp"/>
+        <Button android:id="@+id/btnEditProfile"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Editar perfil" android:backgroundTint="@color/cronos_cyan"
+            android:textColor="@color/white" android:layout_marginTop="20dp"/>
+    </LinearLayout>
+</ScrollView>

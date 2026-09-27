@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="cronos_cyan">#00B4D8</color>
+    <color name="cronos_cyan_dark">#0077B6</color>
+    <color name="cronos_navy">#10305C</color>
+    <color name="cronos_light">#F7FBFC</color>
+    <color name="cronos_gray">#6B7280</color>
+    <color name="cronos_green">#18B981</color>
+    <color name="cronos_blue">#3B82F6</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+</resources>

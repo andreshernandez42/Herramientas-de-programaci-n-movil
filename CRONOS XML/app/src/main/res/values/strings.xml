@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CRONOS</string>
+    <string name="login_title">CRONOS APP</string>
+    <string name="login_subtitle">Organiza tu tiempo, mejora tu día</string>
+    <string name="register_title">REGISTRO CRONOS</string>
+    <string name="loading">Cargando aplicación...</string>
+    <string name="home_title">Mis tareas</string>
+</resources>

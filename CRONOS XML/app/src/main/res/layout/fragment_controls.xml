@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/cronos_light">
+    <LinearLayout
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="18dp">
+        <TextView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="⚙ Panel de Botones y Controles"
+            android:textColor="@color/cronos_navy"
+            android:textStyle="bold" android:textSize="22sp"/>
+        <LinearLayout
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="16dp"
+            android:background="@drawable/bg_panel" android:layout_marginTop="16dp">
+            <TextView
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Crear Tarea Rápida" android:textStyle="bold"
+                android:textColor="@color/cronos_cyan_dark"/>
+            <EditText
+                android:id="@+id/etQuickTitle"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:hint="Título" android:layout_marginTop="8dp"/>
+            <EditText
+                android:id="@+id/etQuickDescription"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:hint="Descripción" android:layout_marginTop="8dp"/>
+            <Spinner
+                android:id="@+id/spQuickCategory"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"/>
+            <Spinner
+                android:id="@+id/spQuickPriority"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"/>
+            <Button
+                android:id="@+id/btnSaveQuickTask"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="Guardar Tarea" android:textColor="@color/white"
+                android:backgroundTint="@color/cronos_cyan" android:layout_marginTop="12dp"/>
+        </LinearLayout>
+        <Button
+            android:id="@+id/btnReminder"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="⏰ Programar Recordatorio"
+            android:textColor="@color/white" android:backgroundTint="@color/cronos_green"
+            android:layout_marginTop="14dp"/>
+        <Button
+            android:id="@+id/btnTags"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="🏷 Organizar por Etiquetas"
+            android:textColor="@color/white" android:backgroundTint="@color/cronos_blue"
+            android:layout_marginTop="10dp"/>
+        <Button
+            android:id="@+id/btnClearCompleted"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="🧹 Limpiar Completadas"
+            android:textColor="@color/cronos_navy" android:backgroundTint="@color/white"
+            android:layout_marginTop="10dp"/>
+    </LinearLayout>
+</ScrollView>

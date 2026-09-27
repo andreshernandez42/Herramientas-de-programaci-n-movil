@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:fillViewport="true" android:background="@color/cronos_light">
+    <LinearLayout
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="24dp"
+        android:gravity="center_horizontal">
+        <LinearLayout android:id="@+id/cardLoginHeader"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:gravity="center"
+            android:padding="24dp" android:background="@drawable/bg_cronos_header">
+            <TextView android:id="@+id/tvLoginLogo"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="⌛" android:textSize="42sp"/>
+            <TextView android:id="@+id/tvLoginTitle"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="@string/login_title" android:textColor="@color/white"
+                android:textStyle="bold" android:textSize="22sp"/>
+            <TextView android:id="@+id/tvLoginSubtitle"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="@string/login_subtitle" android:textColor="@color/white"/>
+        </LinearLayout>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Iniciar sesión" android:textColor="@color/cronos_navy"
+            android:textStyle="bold" android:textSize="22sp" android:layout_marginTop="30dp"/>
+        <EditText android:id="@+id/etLoginEmail"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:hint="Correo electrónico" android:inputType="textEmailAddress"
+            android:singleLine="true" android:layout_marginTop="20dp"/>
+        <EditText android:id="@+id/etLoginPassword"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:hint="Contraseña" android:inputType="textPassword"
+            android:singleLine="true" android:layout_marginTop="12dp"/>
+        <Button android:id="@+id/btnLogin"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Entrar" android:textColor="@color/white"
+            android:backgroundTint="@color/cronos_cyan" android:layout_marginTop="20dp"/>
+        <Button android:id="@+id/btnGoRegister"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Crear una cuenta nueva" android:textColor="@color/cronos_navy"
+            android:backgroundTint="@color/white" android:layout_marginTop="12dp"/>
+    </LinearLayout>
+</ScrollView>

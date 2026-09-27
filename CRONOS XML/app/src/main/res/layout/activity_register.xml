@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:fillViewport="true" android:background="@color/cronos_light">
+    <LinearLayout
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="24dp"
+        android:gravity="center_horizontal">
+        <LinearLayout android:id="@+id/cardRegisterHeader"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:gravity="center"
+            android:padding="24dp" android:background="@drawable/bg_cronos_header">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="⏱" android:textSize="42sp"/>
+            <TextView android:id="@+id/tvRegisterTitle"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="@string/register_title" android:textColor="@color/white"
+                android:textStyle="bold" android:textSize="22sp"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Comienza a optimizar tu rutina" android:textColor="@color/white"/>
+        </LinearLayout>
+        <EditText android:id="@+id/etFullName"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:hint="Nombre completo" android:inputType="textPersonName"
+            android:layout_marginTop="24dp"/>
+        <EditText android:id="@+id/etRegisterEmail"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:hint="Correo electrónico" android:inputType="textEmailAddress"
+            android:layout_marginTop="12dp"/>
+        <EditText android:id="@+id/etRegisterPassword"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:hint="Contraseña" android:inputType="textPassword"
+            android:layout_marginTop="12dp"/>
+        <Button android:id="@+id/btnRegister"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Registrarse" android:textColor="@color/white"
+            android:backgroundTint="@color/cronos_cyan" android:layout_marginTop="20dp"/>
+        <Button android:id="@+id/btnBackLogin"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="← Volver a iniciar sesión" android:backgroundTint="@color/white"
+            android:textColor="@color/cronos_navy" android:layout_marginTop="12dp"/>
+    </LinearLayout>
+</ScrollView>
