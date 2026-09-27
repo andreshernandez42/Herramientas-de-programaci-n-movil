@@ -26,35 +26,8 @@ Proyecto base preparado para cubrir los requisitos técnicos de la Entrega 2:
 - `TipsFragment` -> `fragment_tips.xml`
 
 ### Soporte
-- `TaskItem.java`: modelo de una tarea.
+- `TaskItem.java`: modelo.
 - `TaskAdapter.java`: adaptador del RecyclerView.
 - `SimpleItemSelectedListener.java`: ayuda para eventos del Spinner.
 - `item_task.xml`: diseño de cada tarjeta de tarea.
 
-## Cómo abrirlo
-1. Descomprime esta carpeta.
-2. Android Studio > File > Open.
-3. Selecciona `CRONOS_Entrega2_Android_Java_XML`.
-4. Espera la sincronización de Gradle.
-5. Ejecuta en un emulador o dispositivo Android.
-
-## Pantallazos que debes tomar
-- Splash
-- Login
-- Registro
-- Home
-- Perfil
-- Fotos
-- Video
-- Web
-- Botones / Controles
-- Tips
-
-Los pantallazos deben ser reales desde el emulador/dispositivo. Los mockups sirven como diseño, pero no sustituyen la evidencia de ejecución.
-
-## Qué insertar en el documento para cada componente
-- Pantallazo real.
-- XML completo o el fragmento XML exigido por el docente.
-- Tabla de IDs y propiedades.
-- Variables Java y `findViewById()`.
-- Eventos y métodos.
