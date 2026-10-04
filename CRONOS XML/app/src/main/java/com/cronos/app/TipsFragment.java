@@ -33,5 +33,20 @@ public class TipsFragment extends Fragment {
 
     private void mostrarDetalleTip(String titulo) {
         Toast.makeText(requireContext(), titulo, Toast.LENGTH_SHORT).show();
+
+        String detalle;
+        if (titulo.contains("Categorías")) {
+            detalle = "Mantén agrupadas tus responsabilidades en Universidad, Trabajo, Casa, Salud, Proyectos y Personal. Esto reduce la fatiga mental y permite enfocarte en un contexto a la vez.";
+        } else if (titulo.contains("Priorización")) {
+            detalle = "Inicia cada jornada resolviendo primero las tareas de prioridad Alta. Esto asegura avanzar en lo crucial antes de atender imprevistos de menor impacto.";
+        } else {
+            detalle = "Aplica la técnica Pomodoro: bloques de 25 minutos de concentración total y 5 minutos de descanso activo para sostener un alto rendimiento sin agotamiento.";
+        }
+
+        new android.app.AlertDialog.Builder(requireContext())
+                .setTitle("💡 " + titulo)
+                .setMessage(detalle)
+                .setPositiveButton("Entendido", null)
+                .show();
     }
 }

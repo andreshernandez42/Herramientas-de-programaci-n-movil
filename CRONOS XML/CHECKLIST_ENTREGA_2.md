@@ -21,8 +21,9 @@
 ## C. Identificadores y propiedades
 - [x] IDs en controles interactivos
 - [x] Colores y tema
-- [x] Menú lateral
-- [x] Drawables de apoyo
+- [x] Menú lateral con iconos y header
+- [x] Drawables de apoyo (incluye ic_cronos_clock)
+- [x] Logo de aplicación actualizado a reloj (⏰ / ic_cronos_clock)
 
 ## D. Variables y vínculos
 - [x] Variables Java
@@ -33,6 +34,7 @@
 - [x] Login
 - [x] Registro
 - [x] Navegación lateral
+- [x] Botón de Salida Segura (Toolbar, Drawer y Perfil) con diálogo de confirmación
 - [x] Filtros
 - [x] Nueva tarea
 - [x] Completar/eliminar tarea

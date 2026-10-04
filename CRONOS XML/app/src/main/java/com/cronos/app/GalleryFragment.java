@@ -44,5 +44,22 @@ public class GalleryFragment extends Fragment {
         Toast.makeText(requireContext(),
                 "Recurso seleccionado: " + nombre,
                 Toast.LENGTH_SHORT).show();
+
+        String detalle;
+        if ("Tiempo".equals(nombre)) {
+            detalle = "Módulo de gestión temporal: Cronología de actividades, horas dedicadas y trazabilidad de tareas de Cronos.";
+        } else if ("Imágenes".equals(nombre)) {
+            detalle = "Galería visual: Fotografías, esquemas y capturas asociadas a tus pendientes y asignaturas.";
+        } else if ("Cámara".equals(nombre)) {
+            detalle = "Captura rápida: Toma fotos de apuntes, tableros o documentos para vincularlos directamente a tus tareas.";
+        } else {
+            detalle = "Archivos y Carpetas: Explorador de documentos organizados por categorías (Universidad, Trabajo, Proyectos).";
+        }
+
+        new android.app.AlertDialog.Builder(requireContext())
+                .setTitle("Galería - " + nombre)
+                .setMessage(detalle)
+                .setPositiveButton("Aceptar", null)
+                .show();
     }
 }

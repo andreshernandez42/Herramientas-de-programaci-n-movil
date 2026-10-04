@@ -9,19 +9,61 @@
         android:textColor="@color/cronos_navy"/>
     <FrameLayout
         android:id="@+id/videoContainer"
-        android:layout_width="match_parent" android:layout_height="240dp"
-        android:layout_marginTop="22dp" android:background="@color/cronos_navy">
+        android:layout_width="match_parent" android:layout_height="220dp"
+        android:layout_marginTop="16dp" android:background="@color/cronos_navy">
+        <VideoView
+            android:id="@+id/sampleVideoView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center" />
         <Button
             android:id="@+id/btnVideoPlay"
-            android:layout_width="80dp" android:layout_height="80dp"
+            android:layout_width="72dp" android:layout_height="72dp"
             android:layout_gravity="center" android:text="▶"
-            android:textSize="30sp" android:textColor="@color/white"
+            android:textSize="28sp" android:textColor="@color/white"
             android:backgroundTint="@color/cronos_cyan"/>
     </FrameLayout>
     <TextView
         android:id="@+id/tvVideoCaption"
         android:layout_width="match_parent" android:layout_height="wrap_content"
         android:text="▶ Demo en vivo de Cronos"
-        android:gravity="center" android:padding="16dp"
+        android:gravity="center" android:padding="14dp"
+        android:textStyle="bold"
+        android:textSize="17sp"
         android:textColor="@color/cronos_navy"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@drawable/bg_panel"
+        android:layout_marginTop="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📹 Video Demostrativo"
+            android:textColor="@color/cronos_cyan_dark"
+            android:textStyle="bold"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="Tutorial completo sobre el registro de tareas, filtros por prioridad, programación de recordatorios y consulta de tips de productividad."
+            android:textColor="@color/cronos_gray"
+            android:textSize="13sp"
+            android:lineSpacingExtra="2dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="⏱ Duración: 2:15 min   •   Calidad: 1080p HD"
+            android:textColor="@color/cronos_navy"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 </LinearLayout>

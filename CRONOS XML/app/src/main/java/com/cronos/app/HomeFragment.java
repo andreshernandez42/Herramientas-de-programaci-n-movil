@@ -124,7 +124,23 @@ public class HomeFragment extends Fragment {
 
     private void cambiarFiltroEstado(String status) {
         currentStatus = status;
+        actualizarEstiloBotonesFiltro();
         aplicarFiltro();
+    }
+
+    private void actualizarEstiloBotonesFiltro() {
+        int colorCyan = androidx.core.content.ContextCompat.getColor(requireContext(), R.color.cronos_cyan);
+        int colorNavy = androidx.core.content.ContextCompat.getColor(requireContext(), R.color.cronos_navy);
+        int colorWhite = androidx.core.content.ContextCompat.getColor(requireContext(), R.color.white);
+
+        btnFilterAll.setBackgroundTintList(android.content.res.ColorStateList.valueOf("TODAS".equals(currentStatus) ? colorCyan : colorWhite));
+        btnFilterAll.setTextColor("TODAS".equals(currentStatus) ? colorWhite : colorNavy);
+
+        btnFilterPending.setBackgroundTintList(android.content.res.ColorStateList.valueOf("PENDIENTE".equals(currentStatus) ? colorCyan : colorWhite));
+        btnFilterPending.setTextColor("PENDIENTE".equals(currentStatus) ? colorWhite : colorNavy);
+
+        btnFilterCompleted.setBackgroundTintList(android.content.res.ColorStateList.valueOf("COMPLETADA".equals(currentStatus) ? colorCyan : colorWhite));
+        btnFilterCompleted.setTextColor("COMPLETADA".equals(currentStatus) ? colorWhite : colorNavy);
     }
 
     private void aplicarFiltro() {
@@ -149,24 +165,54 @@ public class HomeFragment extends Fragment {
     }
 
     private void mostrarFormularioNuevaTarea() {
-        EditText input = new EditText(requireContext());
-        input.setHint("Título de la tarea");
+        android.widget.LinearLayout layout = new android.widget.LinearLayout(requireContext());
+        layout.setOrientation(android.widget.LinearLayout.VERTICAL);
+        layout.setPadding(48, 24, 48, 12);
+
+        final EditText etTitle = new EditText(requireContext());
+        etTitle.setHint("Título de la tarea *");
+        layout.addView(etTitle);
+
+        final EditText etDesc = new EditText(requireContext());
+        etDesc.setHint("Descripción (opcional)");
+        layout.addView(etDesc);
+
+        final Spinner spCat = new Spinner(requireContext());
+        List<String> categories = Arrays.asList("Universidad", "Trabajo", "Casa", "Salud", "Proyectos", "Personal");
+        spCat.setAdapter(new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_dropdown_item, categories));
+        layout.addView(spCat);
+
+        final Spinner spPri = new Spinner(requireContext());
+        List<String> priorities = Arrays.asList("Alta", "Media", "Baja");
+        spPri.setAdapter(new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_dropdown_item, priorities));
+        layout.addView(spPri);
+
+        final EditText etDate = new EditText(requireContext());
+        etDate.setHint("Fecha límite (ej. 30/09/2026)");
+        layout.addView(etDate);
 
         new AlertDialog.Builder(requireContext())
                 .setTitle("Nueva tarea")
-                .setView(input)
+                .setView(layout)
                 .setPositiveButton("Guardar", (dialog, which) -> {
-                    String title = input.getText().toString().trim();
+                    String title = etTitle.getText().toString().trim();
                     if (!title.isEmpty()) {
+                        String desc = etDesc.getText().toString().trim();
+                        String cat = spCat.getSelectedItem().toString();
+                        String pri = spPri.getSelectedItem().toString();
+                        String date = etDate.getText().toString().trim();
+
                         allTasks.add(new TaskItem(
                                 title,
-                                "Tarea creada desde Home",
-                                "Personal",
-                                "Media",
-                                "Sin fecha",
+                                desc.isEmpty() ? "Tarea creada desde Home" : desc,
+                                cat,
+                                pri,
+                                date.isEmpty() ? "Sin fecha" : date,
                                 false
                         ));
                         aplicarFiltro();
+                    } else {
+                        Toast.makeText(requireContext(), "El título es obligatorio", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .setNegativeButton("Cancelar", null)
@@ -176,7 +222,7 @@ public class HomeFragment extends Fragment {
     private void confirmarEliminar(TaskItem task) {
         new AlertDialog.Builder(requireContext())
                 .setTitle("Eliminar tarea")
-                .setMessage("¿Desea eliminar "" + task.getTitle() + ""?")
+                .setMessage("¿Desea eliminar \"" + task.getTitle() + "\"?")
                 .setPositiveButton("Eliminar", (dialog, which) -> {
                     allTasks.remove(task);
                     aplicarFiltro();

@@ -11,7 +11,7 @@
             android:orientation="vertical" android:gravity="center"
             android:padding="24dp" android:background="@drawable/bg_cronos_header">
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="⏱" android:textSize="42sp"/>
+                android:text="⏰" android:textSize="42sp"/>
             <TextView android:id="@+id/tvRegisterTitle"
                 android:layout_width="wrap_content" android:layout_height="wrap_content"
                 android:text="@string/register_title" android:textColor="@color/white"
