@@ -31,5 +31,9 @@
             android:layout_width="match_parent" android:layout_height="wrap_content"
             android:text="Editar perfil" android:backgroundTint="@color/cronos_cyan"
             android:textColor="@color/white" android:layout_marginTop="20dp"/>
+        <Button android:id="@+id/btnSafeExit"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="🔒 Salida Segura" android:backgroundTint="@color/cronos_navy"
+            android:textColor="@color/white" android:layout_marginTop="12dp"/>
     </LinearLayout>
 </ScrollView>

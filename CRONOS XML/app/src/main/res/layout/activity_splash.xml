@@ -5,7 +5,7 @@
     android:background="@color/cronos_cyan">
     <TextView android:id="@+id/tvSplashLogo"
         android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:text="⌛" android:textSize="72sp" android:contentDescription="Logo CRONOS"/>
+        android:text="⏰" android:textSize="72sp" android:contentDescription="Logo CRONOS - Reloj"/>
     <TextView android:id="@+id/tvSplashTitle"
         android:layout_width="wrap_content" android:layout_height="wrap_content"
         android:text="Cronos Tareas" android:textColor="@color/cronos_navy"

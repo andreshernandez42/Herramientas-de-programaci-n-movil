@@ -13,6 +13,9 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private Toolbar toolbar;
+    private android.widget.ImageButton btnMenuToggle;
+    private android.widget.TextView tvToolbarTitle;
+    private android.widget.Button btnToolbarSafeExit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +34,23 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawerLayout);
         navigationView = findViewById(R.id.navigationView);
         toolbar = findViewById(R.id.toolbar);
+        btnMenuToggle = findViewById(R.id.btnMenuToggle);
+        tvToolbarTitle = findViewById(R.id.tvToolbarTitle);
+        btnToolbarSafeExit = findViewById(R.id.btnToolbarSafeExit);
     }
 
     private void configurarMenuLateral() {
-        toolbar.setNavigationIcon(android.R.drawable.ic_menu_more);
-        toolbar.setNavigationOnClickListener(view -> abrirMenu());
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+        }
+
+        if (btnMenuToggle != null) {
+            btnMenuToggle.setOnClickListener(view -> abrirMenu());
+        }
+        if (btnToolbarSafeExit != null) {
+            btnToolbarSafeExit.setOnClickListener(view -> confirmarSalidaSegura());
+        }
 
         navigationView.setNavigationItemSelectedListener(item -> {
             int id = item.getItemId();
@@ -54,18 +69,25 @@ public class MainActivity extends AppCompatActivity {
             } else if (id == R.id.nav_tips) {
                 cargarFragment(new TipsFragment(), "Tips");
             } else if (id == R.id.nav_logout) {
-                cerrarSesion();
+                confirmarSalidaSegura();
             }
             drawerLayout.closeDrawer(GravityCompat.START);
             return true;
         });
     }
 
-    private void abrirMenu() {
-        drawerLayout.openDrawer(GravityCompat.START);
+    public void abrirMenu() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            drawerLayout.openDrawer(GravityCompat.START);
+        }
     }
 
     private void cargarFragment(Fragment fragment, String titulo) {
+        if (tvToolbarTitle != null) {
+            tvToolbarTitle.setText(titulo);
+        }
         toolbar.setTitle(titulo);
         getSupportFragmentManager()
                 .beginTransaction()
@@ -73,9 +95,19 @@ public class MainActivity extends AppCompatActivity {
                 .commit();
     }
 
+    public void confirmarSalidaSegura() {
+        new android.app.AlertDialog.Builder(this)
+                .setTitle("🔒 Salida segura")
+                .setMessage("¿Desea cerrar la sesión de forma segura y proteger sus datos?")
+                .setPositiveButton("Salir", (dialog, which) -> cerrarSesion())
+                .setNegativeButton("Cancelar", null)
+                .show();
+    }
+
     private void cerrarSesion() {
+        android.widget.Toast.makeText(this, "Sesión cerrada de forma segura", android.widget.Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, LoginActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
     }

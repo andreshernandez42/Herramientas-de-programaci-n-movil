@@ -1,32 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:background="@color/cronos_light">
     <LinearLayout
         android:layout_width="match_parent" android:layout_height="wrap_content"
-        android:orientation="vertical" android:padding="18dp">
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="Fotos" android:textStyle="bold" android:textSize="26sp"
+        android:orientation="vertical" android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="📷 Fotos y Galería de Recursos" android:textStyle="bold" android:textSize="22sp"
             android:textColor="@color/cronos_navy"/>
+
+        <TextView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Archivos visuales, evidencias y recursos de tus actividades"
+            android:textColor="@color/cronos_gray" android:textSize="13sp"
+            android:layout_marginTop="4dp"/>
+
+        <!-- Categorías originales de acceso rápido -->
         <GridLayout android:id="@+id/gridGallery"
             android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:columnCount="2" android:rowCount="2" android:layout_marginTop="16dp">
+            android:columnCount="2" android:rowCount="2" android:layout_marginTop="14dp">
             <Button android:id="@+id/btnGalleryTime"
-                android:layout_width="0dp" android:layout_height="130dp"
-                android:layout_columnWeight="1" android:layout_margin="6dp"
-                android:text="⌛\nTiempo" android:backgroundTint="@color/cronos_cyan"/>
+                android:layout_width="0dp" android:layout_height="70dp"
+                android:layout_columnWeight="1" android:layout_margin="4dp"
+                android:text="⏰ Tiempo" android:backgroundTint="@color/cronos_cyan"
+                android:textColor="@color/white" android:textSize="13sp"/>
             <Button android:id="@+id/btnGalleryImage"
-                android:layout_width="0dp" android:layout_height="130dp"
-                android:layout_columnWeight="1" android:layout_margin="6dp"
-                android:text="🖼\nImágenes" android:backgroundTint="@color/cronos_blue"/>
+                android:layout_width="0dp" android:layout_height="70dp"
+                android:layout_columnWeight="1" android:layout_margin="4dp"
+                android:text="🖼 Imágenes" android:backgroundTint="@color/cronos_blue"
+                android:textColor="@color/white" android:textSize="13sp"/>
             <Button android:id="@+id/btnGalleryCamera"
-                android:layout_width="0dp" android:layout_height="130dp"
-                android:layout_columnWeight="1" android:layout_margin="6dp"
-                android:text="📷\nCámara" android:backgroundTint="@color/cronos_cyan_dark"/>
+                android:layout_width="0dp" android:layout_height="70dp"
+                android:layout_columnWeight="1" android:layout_margin="4dp"
+                android:text="📷 Cámara" android:backgroundTint="@color/cronos_cyan_dark"
+                android:textColor="@color/white" android:textSize="13sp"/>
             <Button android:id="@+id/btnGalleryFolder"
-                android:layout_width="0dp" android:layout_height="130dp"
-                android:layout_columnWeight="1" android:layout_margin="6dp"
-                android:text="📁\nCarpeta" android:backgroundTint="@color/cronos_navy"/>
+                android:layout_width="0dp" android:layout_height="70dp"
+                android:layout_columnWeight="1" android:layout_margin="4dp"
+                android:text="📁 Carpetas" android:backgroundTint="@color/cronos_navy"
+                android:textColor="@color/white" android:textSize="13sp"/>
         </GridLayout>
+
+        <!-- Galería de fotos reales de muestra -->
+        <TextView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Galería de Fotos" android:textStyle="bold" android:textSize="18sp"
+            android:textColor="@color/cronos_navy" android:layout_marginTop="20dp"/>
+
+        <!-- Foto 1: Universidad -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardPhoto1"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" app:cardCornerRadius="12dp" app:cardElevation="3dp">
+            <LinearLayout
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="match_parent" android:layout_height="140dp"
+                    android:src="@drawable/img_campus" android:scaleType="centerCrop"
+                    android:contentDescription="Campus Poligran" />
+                <LinearLayout
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="12dp">
+                    <TextView
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="🎓 Sede Universidad Poligran" android:textStyle="bold"
+                        android:textColor="@color/cronos_navy" android:textSize="16sp"/>
+                    <TextView
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Evidencias académicas y apuntes de clases presenciales."
+                        android:textColor="@color/cronos_gray" android:textSize="13sp"
+                        android:layout_marginTop="2dp"/>
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Foto 2: Trabajo -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardPhoto2"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" app:cardCornerRadius="12dp" app:cardElevation="3dp">
+            <LinearLayout
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="match_parent" android:layout_height="140dp"
+                    android:src="@drawable/img_office" android:scaleType="centerCrop"
+                    android:contentDescription="Espacio de Trabajo" />
+                <LinearLayout
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="12dp">
+                    <TextView
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="💼 Oficina y Gestión de Entregables" android:textStyle="bold"
+                        android:textColor="@color/cronos_navy" android:textSize="16sp"/>
+                    <TextView
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Fotografías de tableros Kanban y minutas de reuniones semanales."
+                        android:textColor="@color/cronos_gray" android:textSize="13sp"
+                        android:layout_marginTop="2dp"/>
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Foto 3: Casa -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardPhoto3"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" android:layout_marginBottom="16dp"
+            app:cardCornerRadius="12dp" app:cardElevation="3dp">
+            <LinearLayout
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="match_parent" android:layout_height="140dp"
+                    android:src="@drawable/img_home" android:scaleType="centerCrop"
+                    android:contentDescription="Organización Personal" />
+                <LinearLayout
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:padding="12dp">
+                    <TextView
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="🏠 Organización del Hogar y Bienestar" android:textStyle="bold"
+                        android:textColor="@color/cronos_navy" android:textSize="16sp"/>
+                    <TextView
+                        android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Recordatorios fotográficos de actividades personales y del hogar."
+                        android:textColor="@color/cronos_gray" android:textSize="13sp"
+                        android:layout_marginTop="2dp"/>
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
     </LinearLayout>
 </ScrollView>
