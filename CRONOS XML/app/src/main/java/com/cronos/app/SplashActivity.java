@@ -13,12 +13,25 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        animarLogo();
         iniciarAplicacion();
+    }
+
+    // animacion del reloj
+    private void animarLogo() {
+        findViewById(R.id.tvSplashLogo)
+                .animate()
+                .rotation(360f)
+                .setDuration(SPLASH_DELAY)
+                .start();
     }
 
     private void iniciarAplicacion() {
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+            // si ya inicio sesion va directo al home
+            Class<?> destino = new SessionManager(this).haySesionActiva()
+                    ? MainActivity.class : LoginActivity.class;
+            startActivity(new Intent(SplashActivity.this, destino));
             finish();
         }, SPLASH_DELAY);
     }

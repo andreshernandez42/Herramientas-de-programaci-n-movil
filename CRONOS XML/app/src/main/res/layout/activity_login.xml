@@ -1,44 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:fillViewport="true" android:background="@color/cronos_light">
     <LinearLayout
         android:layout_width="match_parent" android:layout_height="wrap_content"
         android:orientation="vertical" android:padding="24dp"
-        android:gravity="center_horizontal">
+        android:gravity="center">
         <LinearLayout android:id="@+id/cardLoginHeader"
             android:layout_width="match_parent" android:layout_height="wrap_content"
             android:orientation="vertical" android:gravity="center"
-            android:padding="24dp" android:background="@drawable/bg_cronos_header">
+            android:paddingTop="22dp" android:paddingBottom="22dp"
+            android:elevation="6dp"
+            android:background="@drawable/bg_cronos_header">
             <TextView android:id="@+id/tvLoginLogo"
                 android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="⏰" android:textSize="42sp"/>
+                android:text="⌛" android:textSize="38sp"/>
             <TextView android:id="@+id/tvLoginTitle"
                 android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
                 android:text="@string/login_title" android:textColor="@color/white"
-                android:textStyle="bold" android:textSize="22sp"/>
+                android:textStyle="bold" android:textSize="20sp"/>
             <TextView android:id="@+id/tvLoginSubtitle"
                 android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="@string/login_subtitle" android:textColor="@color/white"/>
+                android:layout_marginTop="10dp"
+                android:text="@string/login_subtitle" android:textColor="@color/white"
+                android:textSize="12sp"/>
         </LinearLayout>
+
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="Iniciar sesión" android:textColor="@color/cronos_navy"
-            android:textStyle="bold" android:textSize="22sp" android:layout_marginTop="30dp"/>
+            android:text="Iniciar Sesión" android:textColor="@color/cronos_navy"
+            android:textStyle="bold" android:textSize="20sp" android:layout_marginTop="22dp"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Accede a tu espacio de productividad" android:textColor="@color/cronos_gray"
+            android:textSize="12sp" android:layout_marginTop="4dp"/>
+
         <EditText android:id="@+id/etLoginEmail"
+            style="@style/CronosInput"
             android:layout_width="match_parent" android:layout_height="wrap_content"
             android:hint="Correo electrónico" android:inputType="textEmailAddress"
-            android:singleLine="true" android:layout_marginTop="20dp"/>
+            android:layout_marginTop="22dp"/>
         <EditText android:id="@+id/etLoginPassword"
+            style="@style/CronosInput"
             android:layout_width="match_parent" android:layout_height="wrap_content"
             android:hint="Contraseña" android:inputType="textPassword"
-            android:singleLine="true" android:layout_marginTop="12dp"/>
-        <Button android:id="@+id/btnLogin"
+            android:layout_marginTop="10dp"/>
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnLogin"
+            style="@style/CronosBotonPrincipal"
+            android:layout_width="match_parent" android:layout_height="52dp"
+            android:text="Entrar" android:layout_marginTop="14dp"/>
+
+        <!-- separador con la o -->
+        <LinearLayout
             android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="Entrar" android:textColor="@color/white"
-            android:backgroundTint="@color/cronos_cyan" android:layout_marginTop="20dp"/>
-        <Button android:id="@+id/btnGoRegister"
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="Crear una cuenta nueva" android:textColor="@color/cronos_navy"
-            android:backgroundTint="@color/white" android:layout_marginTop="12dp"/>
+            android:orientation="horizontal" android:gravity="center_vertical"
+            android:layout_marginTop="22dp">
+            <View android:layout_width="0dp" android:layout_height="1dp"
+                android:layout_weight="1" android:background="#D9E2E7"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="o" android:textColor="@color/cronos_gray" android:textSize="12sp"
+                android:paddingStart="10dp" android:paddingEnd="10dp"/>
+            <View android:layout_width="0dp" android:layout_height="1dp"
+                android:layout_weight="1" android:background="#D9E2E7"/>
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnGoRegister"
+            style="@style/CronosBotonDelineado"
+            android:layout_width="match_parent" android:layout_height="52dp"
+            android:text="Crear una cuenta nueva"
+            android:layout_marginTop="22dp"/>
     </LinearLayout>
 </ScrollView>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- imagen oficina -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="320dp" android:height="140dp"
+    android:viewportWidth="320" android:viewportHeight="140">
+    <path android:fillColor="#E0F2FE" android:pathData="M0,0h320v140H0z"/>
+    <path android:fillColor="#3B82F6" android:pathData="M60,30h70v110H60z"/>
+    <path android:fillColor="#10305C" android:pathData="M140,10h80v130h-80z"/>
+    <path android:fillColor="#0077B6" android:pathData="M230,50h60v90h-60z"/>
+    <path android:fillColor="#FFFFFF" android:pathData="M70,40h12v10H70zM92,40h12v10H92zM70,60h12v10H70zM92,60h12v10H92zM70,80h12v10H70zM92,80h12v10H92zM152,22h14v10h-14zM178,22h14v10h-14zM152,44h14v10h-14zM178,44h14v10h-14zM152,66h14v10h-14zM178,66h14v10h-14zM152,88h14v10h-14zM178,88h14v10h-14zM242,62h12v10h-12zM264,62h12v10h-12zM242,84h12v10h-12zM264,84h12v10h-12z"/>
+</vector>

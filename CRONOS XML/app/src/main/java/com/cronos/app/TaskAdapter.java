@@ -44,8 +44,17 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         TaskItem task = tasks.get(position);
         holder.tvTaskTitle.setText(task.getTitle());
         holder.tvTaskDescription.setText(task.getDescription());
-        holder.tvTaskMeta.setText(task.getCategory() + " • " + task.getDueDate()
-                + " • Prioridad " + task.getPriority());
+        holder.tvTaskCategory.setText(task.getCategory());
+        holder.tvTaskMeta.setText("📅 " + fechaCorta(task.getDueDate())
+                + (task.getTag().isEmpty() ? "" : "   #" + task.getTag()));
+
+        // color segun la prioridad
+        holder.tvTaskPriority.setText("• " + task.getPriority());
+        int color;
+        if ("Alta".equals(task.getPriority())) color = 0xFFE5484D;
+        else if ("Media".equals(task.getPriority())) color = 0xFFF59E0B;
+        else color = 0xFF18B981;
+        holder.tvTaskPriority.setTextColor(color);
 
         holder.cbTaskDone.setOnCheckedChangeListener(null);
         holder.cbTaskDone.setChecked(task.isCompleted());
@@ -57,6 +66,18 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         });
 
         holder.btnDeleteTask.setOnClickListener(view -> listener.onDelete(task));
+    }
+
+    // pasa 11/09/2026 a 11 sept
+    private String fechaCorta(String fecha) {
+        String[] meses = {"ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sept", "oct", "nov", "dic"};
+        try {
+            String[] partes = fecha.trim().split(" ")[0].split("/");
+            int mes = Integer.parseInt(partes[1]);
+            return Integer.parseInt(partes[0]) + " " + meses[mes - 1];
+        } catch (Exception e) {
+            return fecha;
+        }
     }
 
     private void aplicarEstiloCompletado(TextView textView, boolean completed) {
@@ -76,7 +97,9 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         CheckBox cbTaskDone;
         TextView tvTaskTitle;
         TextView tvTaskDescription;
+        TextView tvTaskCategory;
         TextView tvTaskMeta;
+        TextView tvTaskPriority;
         ImageButton btnDeleteTask;
 
         TaskViewHolder(@NonNull View itemView) {
@@ -84,7 +107,9 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
             cbTaskDone = itemView.findViewById(R.id.cbTaskDone);
             tvTaskTitle = itemView.findViewById(R.id.tvTaskTitle);
             tvTaskDescription = itemView.findViewById(R.id.tvTaskDescription);
+            tvTaskCategory = itemView.findViewById(R.id.tvTaskCategory);
             tvTaskMeta = itemView.findViewById(R.id.tvTaskMeta);
+            tvTaskPriority = itemView.findViewById(R.id.tvTaskPriority);
             btnDeleteTask = itemView.findViewById(R.id.btnDeleteTask);
         }
     }

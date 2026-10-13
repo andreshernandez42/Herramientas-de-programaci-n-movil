@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- imagen proyectos -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="320dp" android:height="140dp"
+    android:viewportWidth="320" android:viewportHeight="140">
+    <path android:fillColor="#EEF2FF" android:pathData="M0,0h320v140H0z"/>
+    <path android:fillColor="#FFFFFF" android:pathData="M30,15h260v110H30z"/>
+    <path android:fillColor="#10305C" android:pathData="M30,15h260v14H30zM115,29h2v96h-2zM203,29h2v96h-2z"/>
+    <path android:fillColor="#FFD166" android:pathData="M42,40h62v22H42zM42,70h62v22H42z"/>
+    <path android:fillColor="#00B4D8" android:pathData="M128,40h64v22h-64zM128,70h64v22h-64zM128,100h64v18h-64z"/>
+    <path android:fillColor="#18B981" android:pathData="M216,40h62v22h-62z"/>
+</vector>

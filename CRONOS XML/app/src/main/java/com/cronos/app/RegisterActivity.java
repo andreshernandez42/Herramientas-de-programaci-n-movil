@@ -52,7 +52,13 @@ public class RegisterActivity extends AppCompatActivity {
             etRegisterPassword.setError("Mínimo 6 caracteres");
             return;
         }
-        Toast.makeText(this, "Cuenta creada correctamente", Toast.LENGTH_SHORT).show();
+        SessionManager session = new SessionManager(this);
+        if (session.existeUsuario(correo)) {
+            etRegisterEmail.setError("Ya existe una cuenta con este correo");
+            return;
+        }
+        session.registrarUsuario(nombre, correo, password);
+        Toast.makeText(this, "Cuenta creada correctamente. Inicie sesión.", Toast.LENGTH_SHORT).show();
         finish();
     }
 

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- fondo de la opcion seleccionada -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_activated="true">
+        <inset android:insetLeft="8dp" android:insetRight="8dp"
+            android:insetTop="6dp" android:insetBottom="6dp">
+            <shape android:shape="rectangle">
+                <corners android:radius="14dp" />
+                <solid android:color="@color/cronos_cyan" />
+            </shape>
+        </inset>
+    </item>
+    <item android:state_pressed="true">
+        <inset android:insetLeft="8dp" android:insetRight="8dp"
+            android:insetTop="6dp" android:insetBottom="6dp">
+            <shape android:shape="rectangle">
+                <corners android:radius="14dp" />
+                <solid android:color="#E0F7FA" />
+            </shape>
+        </inset>
+    </item>
+    <item android:drawable="@android:color/transparent" />
+</selector>

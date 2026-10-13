@@ -1,19 +1,20 @@
 package com.cronos.app;
 
-import android.app.AlertDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import java.util.List;
 
 public class ProfileFragment extends Fragment {
 
-    private Button btnEditProfile;
-    private Button btnSafeExit;
+    private TextView tvProfileName;
+    private TextView tvProfileEmail;
+    private TextView tvStatTotal;
+    private TextView tvStatCompleted;
+    private TextView tvStatPending;
 
     public ProfileFragment() {
         super(R.layout.fragment_profile);
@@ -22,33 +23,28 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        btnEditProfile = view.findViewById(R.id.btnEditProfile);
-        btnSafeExit = view.findViewById(R.id.btnSafeExit);
-
-        btnEditProfile.setOnClickListener(v -> editarPerfil());
-        btnSafeExit.setOnClickListener(v -> confirmarSalidaSegura());
+        vincularVistas(view);
+        mostrarDatosUsuario();
     }
 
-    private void editarPerfil() {
-        Toast.makeText(requireContext(),
-                "Edición de perfil habilitada para siguiente iteración",
-                Toast.LENGTH_SHORT).show();
+    private void vincularVistas(View view) {
+        tvProfileName = view.findViewById(R.id.tvProfileName);
+        tvProfileEmail = view.findViewById(R.id.tvProfileEmail);
+        tvStatTotal = view.findViewById(R.id.tvStatTotal);
+        tvStatCompleted = view.findViewById(R.id.tvStatCompleted);
+        tvStatPending = view.findViewById(R.id.tvStatPending);
     }
 
-    private void confirmarSalidaSegura() {
-        new AlertDialog.Builder(requireContext())
-                .setTitle("Salida segura")
-                .setMessage("¿Desea cerrar la sesión de forma segura y proteger sus datos?")
-                .setPositiveButton("Salir", (dialog, which) -> {
-                    Toast.makeText(requireContext(), "Sesión cerrada de forma segura", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(requireContext(), LoginActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
-                    if (getActivity() != null) {
-                        getActivity().finish();
-                    }
-                })
-                .setNegativeButton("Cancelar", null)
-                .show();
+    // pone el nombre y cuantas tareas tiene
+    private void mostrarDatosUsuario() {
+        SessionManager session = new SessionManager(requireContext());
+        tvProfileName.setText(session.getNombreActivo());
+        tvProfileEmail.setText(session.getCorreoActivo());
+
+        List<TaskItem> tareas = new TaskRepository(requireContext()).obtenerTareas();
+        int completadas = TaskRepository.contarCompletadas(tareas);
+        tvStatTotal.setText(String.valueOf(tareas.size()));
+        tvStatCompleted.setText(String.valueOf(completadas));
+        tvStatPending.setText(String.valueOf(tareas.size() - completadas));
     }
 }

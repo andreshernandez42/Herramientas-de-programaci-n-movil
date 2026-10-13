@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- imagen ejercicio -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="320dp" android:height="140dp"
+    android:viewportWidth="320" android:viewportHeight="140">
+    <path android:fillColor="#E8F8F2" android:pathData="M0,0h320v140H0z"/>
+    <path android:fillColor="#10305C" android:pathData="M90,64h140v12H90z"/>
+    <path android:fillColor="#18B981" android:pathData="M70,40h20v60H70zM230,40h20v60h-20z"/>
+    <path android:fillColor="#0077B6" android:pathData="M50,50h20v40H50zM250,50h20v40h-20z"/>
+    <path android:fillColor="#FF6B6B" android:pathData="M160,128c-30,-22 -44,-34 -44,-48a14,14 0,0 1,28 -4h32a14,14 0,0 1,28 4c0,14 -14,26 -44,48z" />
+</vector>

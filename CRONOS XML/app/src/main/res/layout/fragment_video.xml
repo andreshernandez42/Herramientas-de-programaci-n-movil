@@ -61,7 +61,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="⏱ Duración: 2:15 min   •   Calidad: 1080p HD"
+            android:text="⏯ Controles: reproducir, pausar y barra de avance"
             android:textColor="@color/cronos_navy"
             android:textSize="12sp"
             android:textStyle="bold" />

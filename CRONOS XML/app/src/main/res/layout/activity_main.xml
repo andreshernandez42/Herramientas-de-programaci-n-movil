@@ -1,70 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/drawerLayout"
+    android:id="@+id/mainRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:fitsSystemWindows="true">
-    <LinearLayout
-        android:layout_width="match_parent" android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:fitsSystemWindows="true">
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/cronos_cyan"
+        app:contentInsetStart="0dp"
+        app:contentInsetStartWithNavigation="0dp">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/cronos_cyan"
-            app:contentInsetStart="0dp"
-            app:contentInsetStartWithNavigation="0dp">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:paddingStart="8dp"
-                android:paddingEnd="12dp">
-                <ImageButton
-                    android:id="@+id/btnMenuToggle"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:src="@drawable/ic_hamburger"
-                    android:contentDescription="Menú de navegación" />
-                <TextView
-                    android:id="@+id/tvToolbarTitle"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginStart="8dp"
-                    android:text="Cronos Tareas"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-                <Button
-                    android:id="@+id/btnToolbarSafeExit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="36dp"
-                    android:text="🔒 Salir"
-                    android:textSize="12sp"
-                    android:textColor="@color/white"
-                    android:backgroundTint="@color/cronos_navy"
-                    android:paddingStart="12dp"
-                    android:paddingEnd="12dp"
-                    android:minWidth="0dp"
-                    android:minHeight="0dp" />
-            </LinearLayout>
-        </androidx.appcompat.widget.Toolbar>
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="8dp"
+            android:paddingEnd="12dp">
+            <ImageButton
+                android:id="@+id/btnMenuToggle"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/bg_menu_toggle"
+                android:src="@drawable/ic_hamburger"
+                android:contentDescription="Mostrar u ocultar el menú" />
+            <TextView
+                android:id="@+id/tvToolbarTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="12dp"
+                android:text="⏳ Cronos Tareas"
+                android:textColor="@color/white"
+                android:textSize="19sp"
+                android:textStyle="bold" />
+            <Button
+                android:id="@+id/btnToolbarSafeExit"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:text="🔒 Salir"
+                android:textSize="12sp"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:backgroundTint="#33FFFFFF"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:minWidth="0dp"
+                android:minHeight="0dp" />
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <!-- menu a la izquierda y contenido a la derecha -->
+    <LinearLayout
+        android:id="@+id/dualPaneContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:background="@color/cronos_light">
+        <FrameLayout
+            android:id="@+id/menuContainer"
+            android:layout_width="76dp"
+            android:layout_height="match_parent"
+            android:background="@color/white" />
+        <View
+            android:id="@+id/paneDivider"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#E2E8F0" />
         <FrameLayout
             android:id="@+id/fragmentContainer"
-            android:layout_width="match_parent" android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
     </LinearLayout>
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigationView"
-        android:layout_width="280dp" android:layout_height="match_parent"
-        android:layout_gravity="start" android:background="@color/white"
-        android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header"
-        app:menu="@menu/drawer_menu"/>
-</androidx.drawerlayout.widget.DrawerLayout>
+</LinearLayout>
