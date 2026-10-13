@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- imagen universidad -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="320dp" android:height="140dp"
+    android:viewportWidth="320" android:viewportHeight="140">
+    <path android:fillColor="#CAF0F8" android:pathData="M0,0h320v140H0z"/>
+    <path android:fillColor="#90E0EF" android:pathData="M0,110h320v30H0z"/>
+    <path android:fillColor="#10305C" android:pathData="M100,60L160,25L220,60z"/>
+    <path android:fillColor="#FFFFFF" android:pathData="M110,60h100v50H110z"/>
+    <path android:fillColor="#0077B6" android:pathData="M122,68h12v42h-12zM146,68h12v42h-12zM170,68h12v42h-12zM194,68h12v42h-12z"/>
+    <path android:fillColor="#FFD166" android:pathData="M270,30a14,14 0,1 1,0 28a14,14 0,1 1,0 -28z"/>
+    <path android:fillColor="#18B981" android:pathData="M40,110a18,22 0,1 1,36 0zM244,110a18,22 0,1 1,36 0z"/>
+</vector>

@@ -46,6 +46,16 @@ public class LoginActivity extends AppCompatActivity {
             etLoginEmail.setError("Ingrese un correo válido");
             return;
         }
+        SessionManager session = new SessionManager(this);
+        if (!session.existeUsuario(correo)) {
+            etLoginEmail.setError("No existe una cuenta con este correo. Regístrese primero.");
+            return;
+        }
+        if (!session.validarCredenciales(correo, password)) {
+            etLoginPassword.setError("Contraseña incorrecta");
+            return;
+        }
+        session.iniciarSesion(correo);
         abrirAplicacion();
     }
 

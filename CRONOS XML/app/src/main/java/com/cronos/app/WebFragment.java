@@ -28,7 +28,8 @@ public class WebFragment extends Fragment {
         vincularVistas(view);
         configurarWebView();
         configurarEventos();
-        cargarMapa();
+        // abre con la pagina de cronos
+        cargarPagina();
     }
 
     private void vincularVistas(View view) {
@@ -43,34 +44,31 @@ public class WebFragment extends Fragment {
         webView.setWebViewClient(new WebViewClient());
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setDomStorageEnabled(true);
+        // para que la pagina se ajuste
+        webView.getSettings().setUseWideViewPort(true);
+        webView.getSettings().setLoadWithOverviewMode(true);
+        webView.getSettings().setBuiltInZoomControls(true);
+        webView.getSettings().setDisplayZoomControls(false);
     }
 
     private void configurarEventos() {
         btnWebGo.setOnClickListener(v -> cargarPagina());
         btnShowMap.setOnClickListener(v -> cargarMapa());
-        btnShowWeb.setOnClickListener(v -> cargarPagina());
+        btnShowWeb.setOnClickListener(v -> {
+            etWebUrl.setText("https://cronostareas.com");
+            cargarPagina();
+        });
     }
 
+    // mapa de la sede
     private void cargarMapa() {
+        String mapUrl = "https://maps.google.com/maps?q=Politecnico+Grancolombiano+Bogota&z=15&output=embed";
         etWebUrl.setText("https://maps.google.com");
-        String mapHtml = "<!DOCTYPE html><html><head><meta name='viewport' content='width=device-width, initial-scale=1.0'>"
-                + "<link rel='stylesheet' href='https://unpkg.com/leaflet@1.9.4/dist/leaflet.css'/>"
-                + "<script src='https://unpkg.com/leaflet@1.9.4/dist/leaflet.js'></script>"
-                + "<style>html,body,#map{height:100%;margin:0;padding:0;font-family:sans-serif;}"
-                + ".custom-popup{font-size:13px;color:#10305C;}"
-                + "</style></head><body>"
-                + "<div id='map'></div>"
-                + "<script>"
-                + "var map = L.map('map').setView([4.654, -74.058], 14);"
-                + "L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {"
-                + "  maxZoom: 19,"
-                + "  attribution: '&copy; OpenStreetMap'"
-                + "}).addTo(map);"
-                + "L.marker([4.654, -74.057]).addTo(map).bindPopup('<b>🎓 Sede Poligran</b><br>Tareas académicas').openPopup();"
-                + "L.marker([4.657, -74.062]).addTo(map).bindPopup('<b>💼 Oficina Trabajo</b><br>Entregables laborales');"
-                + "L.marker([4.649, -74.059]).addTo(map).bindPopup('<b>🏠 Hogar / Casa</b><br>Actividades personales');"
-                + "</script></body></html>";
-        webView.loadDataWithBaseURL("https://openstreetmap.org", mapHtml, "text/html", "UTF-8", null);
+        // el mapa va dentro de un iframe
+        String html = "<!DOCTYPE html><html><head><meta name='viewport' content='width=device-width, initial-scale=1.0'>"
+                + "<style>html,body{margin:0;padding:0;height:100%;}iframe{border:0;width:100%;height:100%;}</style>"
+                + "</head><body><iframe src='" + mapUrl + "' allowfullscreen loading='eager'></iframe></body></html>";
+        webView.loadDataWithBaseURL("https://www.google.com", html, "text/html", "UTF-8", null);
     }
 
     private void cargarPagina() {
@@ -97,7 +95,12 @@ public class WebFragment extends Fragment {
                     + "<div class='header-tag'>🌐 Sitio Oficial</div>"
                     + "<h1>Bienvenido a Cronos Tareas</h1>"
                     + "<p>Plataforma para centralizar tu planificación personal, académica y laboral con recordatorios y priorización inteligente.</p>"
-                    + "<a class='btn-explore' href='javascript:void(0)'>Explorar Contenido</a>"
+                    + "<a class='btn-explore' href='#' onclick=\"document.getElementById('mas').style.display='block';this.style.display='none';return false;\">Explorar Contenido</a>"
+                    + "<div id='mas' style='display:none;text-align:left;margin-top:16px'>"
+                    + "<p>&#9989; Registra tareas con categoría, prioridad y fecha límite.</p>"
+                    + "<p>&#127991; Organiza tus pendientes con etiquetas y filtros.</p>"
+                    + "<p>&#9200; Programa recordatorios y limpia las tareas completadas.</p>"
+                    + "</div>"
                     + "</div>"
                     + "</body></html>";
             webView.loadDataWithBaseURL("https://cronostareas.com", previewHtml, "text/html", "UTF-8", null);

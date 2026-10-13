@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- cada foto de la lista -->
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardFotoItem"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    app:cardCornerRadius="10dp" app:cardElevation="2dp"
+    app:strokeWidth="0dp" app:strokeColor="@color/cronos_cyan">
+    <LinearLayout
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:gravity="center_vertical"
+        android:padding="8dp">
+        <ImageView
+            android:id="@+id/ivFotoMiniatura"
+            android:layout_width="72dp" android:layout_height="52dp"
+            android:scaleType="centerCrop"
+            android:contentDescription="Miniatura de la foto"/>
+        <TextView
+            android:id="@+id/tvFotoTitulo"
+            android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:layout_marginStart="10dp"
+            android:textColor="@color/cronos_navy" android:textStyle="bold"
+            android:textSize="14sp"/>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

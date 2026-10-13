@@ -50,90 +50,46 @@
             android:text="Galería de Fotos" android:textStyle="bold" android:textSize="18sp"
             android:textColor="@color/cronos_navy" android:layout_marginTop="20dp"/>
 
-        <!-- Foto 1: Universidad -->
+        <TextView
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Toque una imagen de la lista para ver su descripción."
+            android:textColor="@color/cronos_gray" android:textSize="13sp"/>
+
+        <!-- foto seleccionada -->
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardPhoto1"
+            android:id="@+id/cardFotoSeleccionada"
             android:layout_width="match_parent" android:layout_height="wrap_content"
             android:layout_marginTop="10dp" app:cardCornerRadius="12dp" app:cardElevation="3dp">
             <LinearLayout
                 android:layout_width="match_parent" android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <ImageView
-                    android:layout_width="match_parent" android:layout_height="140dp"
-                    android:src="@drawable/img_campus" android:scaleType="centerCrop"
-                    android:contentDescription="Campus Poligran" />
-                <LinearLayout
+                    android:id="@+id/ivFotoSeleccionada"
+                    android:layout_width="match_parent" android:layout_height="150dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/img_campus"
+                    android:contentDescription="Imagen seleccionada" />
+                <TextView
+                    android:id="@+id/tvTituloFoto"
                     android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:orientation="vertical" android:padding="12dp">
-                    <TextView
-                        android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:text="🎓 Sede Universidad Poligran" android:textStyle="bold"
-                        android:textColor="@color/cronos_navy" android:textSize="16sp"/>
-                    <TextView
-                        android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:text="Evidencias académicas y apuntes de clases presenciales."
-                        android:textColor="@color/cronos_gray" android:textSize="13sp"
-                        android:layout_marginTop="2dp"/>
-                </LinearLayout>
+                    android:paddingStart="12dp" android:paddingEnd="12dp" android:paddingTop="10dp"
+                    android:textStyle="bold" android:textSize="16sp"
+                    android:textColor="@color/cronos_navy"/>
+                <TextView
+                    android:id="@+id/tvDescripcionFoto"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:padding="12dp"
+                    android:textSize="13sp" android:lineSpacingExtra="2dp"
+                    android:textColor="@color/cronos_gray"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Foto 2: Trabajo -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardPhoto2"
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:layout_marginTop="12dp" app:cardCornerRadius="12dp" app:cardElevation="3dp">
-            <LinearLayout
-                android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <ImageView
-                    android:layout_width="match_parent" android:layout_height="140dp"
-                    android:src="@drawable/img_office" android:scaleType="centerCrop"
-                    android:contentDescription="Espacio de Trabajo" />
-                <LinearLayout
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:orientation="vertical" android:padding="12dp">
-                    <TextView
-                        android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:text="💼 Oficina y Gestión de Entregables" android:textStyle="bold"
-                        android:textColor="@color/cronos_navy" android:textSize="16sp"/>
-                    <TextView
-                        android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:text="Fotografías de tableros Kanban y minutas de reuniones semanales."
-                        android:textColor="@color/cronos_gray" android:textSize="13sp"
-                        android:layout_marginTop="2dp"/>
-                </LinearLayout>
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- Foto 3: Casa -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardPhoto3"
+        <!-- lista de fotos -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvFotos"
             android:layout_width="match_parent" android:layout_height="wrap_content"
             android:layout_marginTop="12dp" android:layout_marginBottom="16dp"
-            app:cardCornerRadius="12dp" app:cardElevation="3dp">
-            <LinearLayout
-                android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <ImageView
-                    android:layout_width="match_parent" android:layout_height="140dp"
-                    android:src="@drawable/img_home" android:scaleType="centerCrop"
-                    android:contentDescription="Organización Personal" />
-                <LinearLayout
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:orientation="vertical" android:padding="12dp">
-                    <TextView
-                        android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:text="🏠 Organización del Hogar y Bienestar" android:textStyle="bold"
-                        android:textColor="@color/cronos_navy" android:textSize="16sp"/>
-                    <TextView
-                        android:layout_width="wrap_content" android:layout_height="wrap_content"
-                        android:text="Recordatorios fotográficos de actividades personales y del hogar."
-                        android:textColor="@color/cronos_gray" android:textSize="13sp"
-                        android:layout_marginTop="2dp"/>
-                </LinearLayout>
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+            android:nestedScrollingEnabled="false"/>
 
     </LinearLayout>
 </ScrollView>

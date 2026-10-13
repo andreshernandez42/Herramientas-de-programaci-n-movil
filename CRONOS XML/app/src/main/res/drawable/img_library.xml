@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- imagen biblioteca -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="320dp" android:height="140dp"
+    android:viewportWidth="320" android:viewportHeight="140">
+    <path android:fillColor="#FFF4E0" android:pathData="M0,0h320v140H0z"/>
+    <path android:fillColor="#10305C" android:pathData="M40,20h240v8H40zM40,70h240v8H40zM40,120h240v8H40z"/>
+    <path android:fillColor="#00B4D8" android:pathData="M50,30h14v40H50zM100,36h12v34h-12zM160,30h16v40h-16zM230,34h12v36h-12zM70,80h14v40H70zM150,84h12v36h-12zM210,80h16v40h-16z"/>
+    <path android:fillColor="#3B82F6" android:pathData="M66,34h12v36H66zM120,30h16v40h-16zM196,32h14v38h-14zM250,30h16v40h-16zM90,86h12v34H90zM180,80h14v40h-14zM240,84h12v36h-12z"/>
+    <path android:fillColor="#18B981" android:pathData="M82,30h14v40H82zM140,34h14v36h-14zM212,30h14v40h-14zM110,80h16v40h-16zM130,84h14v36h-14zM256,80h14v40h-14z"/>
+</vector>

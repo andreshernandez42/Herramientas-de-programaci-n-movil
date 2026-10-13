@@ -1,39 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- perfil -->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/svProfile"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:background="@color/cronos_light">
     <LinearLayout
         android:layout_width="match_parent" android:layout_height="wrap_content"
         android:orientation="vertical" android:gravity="center_horizontal"
-        android:padding="24dp">
+        android:paddingTop="24dp" android:paddingBottom="24dp"
+        android:paddingStart="12dp" android:paddingEnd="12dp">
+
         <TextView android:id="@+id/tvProfileAvatar"
-            android:layout_width="96dp" android:layout_height="96dp"
-            android:gravity="center" android:text="👤" android:textSize="52sp"
-            android:background="@drawable/bg_cronos_header"/>
+            android:layout_width="64dp" android:layout_height="64dp"
+            android:gravity="center"
+            android:text="⌛" android:textSize="30sp"
+            android:elevation="4dp"
+            android:background="@drawable/bg_avatar"
+            android:contentDescription="Foto de perfil"/>
         <TextView android:id="@+id/tvProfileName"
             android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="Sofia Reyes" android:textColor="@color/cronos_navy"
-            android:textStyle="bold" android:textSize="22sp" android:layout_marginTop="14dp"/>
+            android:layout_marginTop="14dp"
+            android:text="Usuario Cronos" android:textColor="@color/cronos_navy"
+            android:textStyle="bold" android:textSize="17sp"/>
         <TextView android:id="@+id/tvProfileEmail"
             android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="sofia@cronos.app" android:textColor="@color/cronos_gray"/>
-        <TextView android:id="@+id/tvProfileStats"
+            android:layout_marginTop="8dp"
+            android:text="usuario@cronos.app" android:textColor="@color/cronos_gray"
+            android:textSize="12sp"/>
+
+        <!-- cuadro de tareas -->
+        <LinearLayout android:id="@+id/layoutProfileStats"
             android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="5 Tareas   •   3 Completadas   •   2 Pendientes"
-            android:gravity="center" android:padding="20dp"
-            android:background="@drawable/bg_panel" android:layout_marginTop="24dp"/>
-        <TextView android:id="@+id/tvMembership"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:paddingTop="18dp" android:paddingBottom="18dp"
+            android:elevation="2dp"
+            android:background="@drawable/bg_card">
+            <LinearLayout
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                <TextView android:id="@+id/tvStatTotal"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="0" android:textStyle="bold" android:textSize="20sp"
+                    android:textColor="@color/cronos_cyan"/>
+                <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Tareas" android:textSize="11sp"
+                    android:textColor="@color/cronos_gray"/>
+            </LinearLayout>
+            <View android:layout_width="1dp" android:layout_height="match_parent"
+                android:background="#E5ECF0"/>
+            <LinearLayout
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                <TextView android:id="@+id/tvStatCompleted"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="0" android:textStyle="bold" android:textSize="20sp"
+                    android:textColor="@color/cronos_cyan"/>
+                <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Completadas" android:textSize="11sp"
+                    android:textColor="@color/cronos_gray"/>
+            </LinearLayout>
+            <View android:layout_width="1dp" android:layout_height="match_parent"
+                android:background="#E5ECF0"/>
+            <LinearLayout
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:orientation="vertical" android:gravity="center">
+                <TextView android:id="@+id/tvStatPending"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="0" android:textStyle="bold" android:textSize="20sp"
+                    android:textColor="@color/cronos_cyan"/>
+                <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Pendientes" android:textSize="11sp"
+                    android:textColor="@color/cronos_gray"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- membresia -->
+        <LinearLayout android:id="@+id/layoutMembership"
             android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="✓ Membresía activa\nCuenta sincronizada con Cronos Cloud"
-            android:gravity="center" android:padding="18dp"
-            android:background="@drawable/bg_panel" android:layout_marginTop="16dp"/>
-        <Button android:id="@+id/btnEditProfile"
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="Editar perfil" android:backgroundTint="@color/cronos_cyan"
-            android:textColor="@color/white" android:layout_marginTop="20dp"/>
-        <Button android:id="@+id/btnSafeExit"
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="🔒 Salida Segura" android:backgroundTint="@color/cronos_navy"
-            android:textColor="@color/white" android:layout_marginTop="12dp"/>
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="8dp" android:layout_marginEnd="8dp"
+            android:orientation="vertical" android:gravity="center"
+            android:padding="16dp"
+            android:background="@drawable/bg_membership">
+            <TextView android:id="@+id/tvMembership"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="🔥 Membresía Activa" android:textStyle="bold"
+                android:textSize="13sp" android:textColor="@color/cronos_cyan_dark"/>
+            <TextView android:id="@+id/tvMembershipDetail"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:text="Cuenta sincronizada correctamente con Cronos Cloud."
+                android:textSize="11sp" android:textColor="@color/cronos_gray"/>
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

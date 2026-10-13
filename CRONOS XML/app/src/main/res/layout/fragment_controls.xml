@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:background="@color/cronos_light">
     <LinearLayout
@@ -56,7 +57,64 @@
             android:id="@+id/btnClearCompleted"
             android:layout_width="match_parent" android:layout_height="wrap_content"
             android:text="🧹 Limpiar Completadas"
-            android:textColor="@color/cronos_navy" android:backgroundTint="@color/white"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:textColor="@color/cronos_navy"
+            app:strokeColor="@color/cronos_navy" app:strokeWidth="1dp"
             android:layout_marginTop="10dp"/>
+
+        <!-- mas controles -->
+        <LinearLayout
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="16dp"
+            android:background="@drawable/bg_panel" android:layout_marginTop="16dp">
+            <TextView
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="⏱ Sesión de concentración" android:textStyle="bold"
+                android:textColor="@color/cronos_cyan_dark"/>
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/swFocusMode"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Modo concentración"
+                android:textColor="@color/cronos_navy"/>
+            <TextView
+                android:id="@+id/tvFocusMinutes"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Duración: 25 minutos"
+                android:textColor="@color/cronos_navy"/>
+            <SeekBar
+                android:id="@+id/sbFocusMinutes"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:max="60" android:progress="25"/>
+            <TextView
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Tipo de descanso" android:textColor="@color/cronos_navy"/>
+            <RadioGroup
+                android:id="@+id/rgBreakType"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <RadioButton
+                    android:id="@+id/rbBreakShort"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Corto (5 min)" android:checked="true"/>
+                <RadioButton
+                    android:id="@+id/rbBreakLong"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Largo (15 min)"/>
+            </RadioGroup>
+            <CheckBox
+                android:id="@+id/cbFocusSound"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="Avisar al terminar"/>
+            <Button
+                android:id="@+id/btnStartFocus"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Iniciar sesión" android:enabled="false"
+                android:textColor="@color/white" android:backgroundTint="@color/cronos_navy"/>
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

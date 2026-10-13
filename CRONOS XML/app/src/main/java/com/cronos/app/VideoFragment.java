@@ -14,7 +14,6 @@ import androidx.fragment.app.Fragment;
 public class VideoFragment extends Fragment {
 
     private static final String VIDEO_URL = "https://youtu.be/EU-A2QysKOQ";
-    private static final String SAMPLE_MP4 = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4";
     private Button btnVideoPlay;
     private android.widget.VideoView sampleVideoView;
 
@@ -34,12 +33,12 @@ public class VideoFragment extends Fragment {
     private void reproducirVideo() {
         if (sampleVideoView != null) {
             btnVideoPlay.setVisibility(View.GONE);
-            Toast.makeText(requireContext(), "Iniciando video de muestra...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(requireContext(), "Reproduciendo la demo de Cronos", Toast.LENGTH_SHORT).show();
 
             android.widget.MediaController mediaController = new android.widget.MediaController(requireContext());
             mediaController.setAnchorView(sampleVideoView);
             sampleVideoView.setMediaController(mediaController);
-            sampleVideoView.setVideoURI(Uri.parse(SAMPLE_MP4));
+            sampleVideoView.setVideoURI(obtenerUriVideo());
 
             sampleVideoView.setOnPreparedListener(mp -> sampleVideoView.start());
 
@@ -51,6 +50,11 @@ public class VideoFragment extends Fragment {
         } else {
             abrirVideoExterno();
         }
+    }
+
+    // video de la demo guardado en res/raw
+    private Uri obtenerUriVideo() {
+        return Uri.parse("android.resource://" + requireContext().getPackageName() + "/" + R.raw.cronos_demo);
     }
 
     private void abrirVideoExterno() {

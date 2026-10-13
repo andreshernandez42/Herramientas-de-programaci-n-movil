@@ -4,32 +4,73 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent" android:layout_height="wrap_content"
     android:layout_marginBottom="10dp"
-    app:cardCornerRadius="12dp" app:cardElevation="3dp">
+    android:layout_marginStart="2dp" android:layout_marginEnd="2dp"
+    app:cardCornerRadius="14dp" app:cardElevation="2dp"
+    app:strokeWidth="1dp" app:strokeColor="#E5ECF0">
     <LinearLayout
         android:layout_width="match_parent" android:layout_height="wrap_content"
-        android:orientation="horizontal" android:padding="14dp" android:gravity="center_vertical">
-        <CheckBox android:id="@+id/cbTaskDone"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-        <LinearLayout
-            android:layout_width="0dp" android:layout_height="wrap_content"
-            android:layout_weight="1" android:orientation="vertical"
-            android:layout_marginStart="8dp">
+        android:orientation="vertical" android:padding="12dp">
+
+        <!-- titulo y boton de borrar -->
+        <FrameLayout
+            android:layout_width="match_parent" android:layout_height="wrap_content">
             <TextView android:id="@+id/tvTaskTitle"
                 android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingStart="28dp" android:paddingEnd="28dp"
+                android:paddingTop="4dp"
                 android:textStyle="bold" android:textColor="@color/cronos_navy"
-                android:textSize="17sp"/>
+                android:textSize="14sp"/>
+            <ImageButton android:id="@+id/btnDeleteTask"
+                android:layout_width="28dp" android:layout_height="28dp"
+                android:layout_gravity="end|top"
+                android:src="@drawable/ic_delete"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Eliminar tarea"/>
+        </FrameLayout>
+
+        <!-- casilla y descripcion -->
+        <LinearLayout
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical"
+            android:layout_marginTop="4dp">
+            <CheckBox android:id="@+id/cbTaskDone"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                app:buttonTint="@color/cronos_cyan"/>
             <TextView android:id="@+id/tvTaskDescription"
-                android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:textColor="@color/cronos_gray" android:layout_marginTop="3dp"/>
-            <TextView android:id="@+id/tvTaskMeta"
-                android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:textColor="@color/cronos_cyan_dark" android:textSize="12sp"
-                android:layout_marginTop="6dp"/>
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:maxLines="2" android:ellipsize="end"
+                android:lineSpacingExtra="4dp"
+                android:textColor="@color/cronos_gray" android:textSize="11sp"/>
         </LinearLayout>
-        <ImageButton android:id="@+id/btnDeleteTask"
-            android:layout_width="44dp" android:layout_height="44dp"
-            android:src="@android:drawable/ic_menu_delete"
-            android:background="@android:color/transparent"
-            android:contentDescription="Eliminar tarea"/>
+
+        <View android:layout_width="match_parent" android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="#E5ECF0"/>
+
+        <!-- categoria fecha y prioridad -->
+        <LinearLayout
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="horizontal" android:gravity="center_vertical"
+            android:layout_marginTop="10dp">
+            <TextView android:id="@+id/tvTaskCategory"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:paddingStart="8dp" android:paddingEnd="8dp"
+                android:paddingTop="6dp" android:paddingBottom="6dp"
+                android:background="@drawable/bg_category_tag"
+                android:textColor="@color/cronos_cyan_dark"
+                android:textStyle="bold" android:textSize="10sp"/>
+            <TextView android:id="@+id/tvTaskMeta"
+                android:layout_width="0dp" android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:maxLines="1" android:ellipsize="end"
+                android:textColor="@color/cronos_gray" android:textSize="10sp"/>
+            <TextView android:id="@+id/tvTaskPriority"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:textStyle="bold" android:textSize="10sp"/>
+        </LinearLayout>
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

@@ -2,97 +2,101 @@ package com.cronos.app;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-import com.google.android.material.navigation.NavigationView;
 
-public class MainActivity extends AppCompatActivity {
-    private DrawerLayout drawerLayout;
-    private NavigationView navigationView;
+// pantalla principal con el menu y el contenido
+public class MainActivity extends AppCompatActivity
+        implements MenuFragment.OnOpcionSeleccionadaListener {
+
+    private static final String TAG_MENU = "menu_fragment";
+    private static final String KEY_TITULO = "titulo_actual";
+
     private Toolbar toolbar;
-    private android.widget.ImageButton btnMenuToggle;
-    private android.widget.TextView tvToolbarTitle;
-    private android.widget.Button btnToolbarSafeExit;
+    private ImageButton btnMenuToggle;
+    private TextView tvToolbarTitle;
+    private Button btnToolbarSafeExit;
+    private View menuContainer;
+    private View paneDivider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         vincularVistas();
-        configurarMenuLateral();
+        configurarToolbar();
 
         if (savedInstanceState == null) {
-            cargarFragment(new HomeFragment(), "Mis tareas");
-            navigationView.setCheckedItem(R.id.nav_home);
+            // se cargan los dos fragmentos
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.menuContainer, new MenuFragment(), TAG_MENU)
+                    .commit();
+            cargarFragment(new HomeFragment(), MenuFragment.TITULOS[MenuFragment.OPCION_INICIO]);
+        } else {
+            tvToolbarTitle.setText(savedInstanceState.getString(KEY_TITULO, "⏳ Cronos Tareas"));
         }
     }
 
     private void vincularVistas() {
-        drawerLayout = findViewById(R.id.drawerLayout);
-        navigationView = findViewById(R.id.navigationView);
         toolbar = findViewById(R.id.toolbar);
         btnMenuToggle = findViewById(R.id.btnMenuToggle);
         tvToolbarTitle = findViewById(R.id.tvToolbarTitle);
         btnToolbarSafeExit = findViewById(R.id.btnToolbarSafeExit);
+        menuContainer = findViewById(R.id.menuContainer);
+        paneDivider = findViewById(R.id.paneDivider);
     }
 
-    private void configurarMenuLateral() {
+    private void configurarToolbar() {
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayShowTitleEnabled(false);
         }
-
-        if (btnMenuToggle != null) {
-            btnMenuToggle.setOnClickListener(view -> abrirMenu());
-        }
-        if (btnToolbarSafeExit != null) {
-            btnToolbarSafeExit.setOnClickListener(view -> confirmarSalidaSegura());
-        }
-
-        navigationView.setNavigationItemSelectedListener(item -> {
-            int id = item.getItemId();
-            if (id == R.id.nav_home) {
-                cargarFragment(new HomeFragment(), "Mis tareas");
-            } else if (id == R.id.nav_profile) {
-                cargarFragment(new ProfileFragment(), "Perfil");
-            } else if (id == R.id.nav_gallery) {
-                cargarFragment(new GalleryFragment(), "Fotos");
-            } else if (id == R.id.nav_video) {
-                cargarFragment(new VideoFragment(), "Video");
-            } else if (id == R.id.nav_web) {
-                cargarFragment(new WebFragment(), "Web");
-            } else if (id == R.id.nav_controls) {
-                cargarFragment(new ControlsFragment(), "Botones / Controles");
-            } else if (id == R.id.nav_tips) {
-                cargarFragment(new TipsFragment(), "Tips");
-            } else if (id == R.id.nav_logout) {
-                confirmarSalidaSegura();
-            }
-            drawerLayout.closeDrawer(GravityCompat.START);
-            return true;
-        });
+        btnMenuToggle.setOnClickListener(view -> alternarMenu());
+        btnToolbarSafeExit.setOnClickListener(view -> confirmarSalidaSegura());
     }
 
-    public void abrirMenu() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            drawerLayout.openDrawer(GravityCompat.START);
-        }
+    // cuando tocan una opcion cambia el fragmento de la derecha
+    @Override
+    public void onOpcionSeleccionada(int posicion) {
+        Fragment fragment;
+        if (posicion == MenuFragment.OPCION_PERFIL) fragment = new ProfileFragment();
+        else if (posicion == MenuFragment.OPCION_FOTOS) fragment = new GalleryFragment();
+        else if (posicion == MenuFragment.OPCION_VIDEO) fragment = new VideoFragment();
+        else if (posicion == MenuFragment.OPCION_WEB) fragment = new WebFragment();
+        else if (posicion == MenuFragment.OPCION_BOTONES) fragment = new ControlsFragment();
+        else if (posicion == MenuFragment.OPCION_TIPS) fragment = new TipsFragment();
+        else fragment = new HomeFragment();
+
+        cargarFragment(fragment, MenuFragment.TITULOS[posicion]);
+    }
+
+    // mostrar u ocultar el menu
+    public void alternarMenu() {
+        int visibilidad = menuContainer.getVisibility() == View.VISIBLE ? View.GONE : View.VISIBLE;
+        menuContainer.setVisibility(visibilidad);
+        paneDivider.setVisibility(visibilidad);
     }
 
     private void cargarFragment(Fragment fragment, String titulo) {
-        if (tvToolbarTitle != null) {
-            tvToolbarTitle.setText(titulo);
-        }
-        toolbar.setTitle(titulo);
+        tvToolbarTitle.setText(titulo);
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fragmentContainer, fragment)
                 .commit();
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(KEY_TITULO, tvToolbarTitle.getText().toString());
     }
 
     public void confirmarSalidaSegura() {
@@ -105,7 +109,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void cerrarSesion() {
-        android.widget.Toast.makeText(this, "Sesión cerrada de forma segura", android.widget.Toast.LENGTH_SHORT).show();
+        new SessionManager(this).cerrarSesion();
+        Toast.makeText(this, "Sesión cerrada de forma segura", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, LoginActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
